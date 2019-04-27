@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Upload Videos</title>
+</head>
+<body>
+
+<h1>Video Uploader</h1>
+<form enctype="multipart/form-data" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<button id="files" onclick="document.getElementById('file').click(); return	false;">Choose Video</button>
+										<input type="file" name ="document" id="file" ></div>
+										<button type="submit" class="button button1" >Upload</button>
+</form>
+{% if url %}
+	<video width="320" height="240" controls>
+  		<source src='{{url}}' type="video/mp4">
+  	</video>
+{% endif %}	
+
+
+
+</p>
+
+</body>
+</html>

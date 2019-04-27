@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>GitTrace </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		{% load staticfiles %}
+		<link rel='stylesheet' href="{% static 'input/css/main.css' %}">
+
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script src="{% static 'input/js/js/jquery.min.js' %}"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: #222729; 
+  color: black; 
+  border: 3px solid #222729;
+}
+
+.button1:hover {
+  background-color: gray;
+  color: white;
+}
+input[type=file]
+{
+	color:transparent;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 3px solid #222729;
+  color: gray;
+  background-color: #222729;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.btn:hover {
+  background-color: gray;
+  color: white;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+input {
+  font-size: 20px;
+  height:50px;
+}
+.imagediv {
+	float:left;
+    margin-top:50px;
+}
+.imagediv .showonhover {
+	background:red;
+	padding:20px;
+	opacity:0.9;
+	color:white;
+	width: 100%;
+	display:block;	
+	text-align:center;
+	cursor:pointer;
+}
+</style>
+
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							{% load staticfiles %}
+							{%  for post in all_posts %}
+								{% if post.image != None %}
+									
+									<span class="image avatar48"><img src="{{post.image.url}}" alt="" /></span>	
+									
+								{% endif %}	
+        						<h1 id="title">{{ post.username }}</h1>
+        						<font size=4 color="gray">Company: {{ post.company_name }}</font><br>
+        						<font size=4 color="gray">Phone:  {{ post.phone }}</font>
+        						<font size=4 color="gray"> {{ post.email}} </font>
+
+    						{% endfor %}
+                            <p><i class="fa fa-map-marker"></i> India</p>
+						</div>
+
+					<!-- Nav -->
+
+
+				</div>
+
+
+				<div class="bottom">
+                    
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li>
+								<a href="#" onClick="document.getElementById('logoutform').submit()">
+									<i class="logout icon fa-power-off"></i>Logout
+								<form id="logoutform" method="POST" action="/signout/">
+										{% csrf_token %}
+											<input type="hidden">
+								</form>
+								</a>
+							</li>
+
+						</ul>
+
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<!-- Main -->
+			<div id="main">
+               
+                
+					<section id="repo" class="one">
+						<div class="container">
+                            <header>
+                                <h4 class="heading main-header1" style="position:relative;left: 44%;">Upload Video</h4>
+                            </header>
+                            
+                            
+							<div class="row" style="position:relative;left: 42.5%;">
+   						 			<form enctype="multipart/form-data" method="POST" action="/upload/">
+										{% csrf_token %}
+										{{ form.as_p }}
+										<div class="upload-btn-wrapper">
+  											<button class="btn">Choose Video</button>
+											<input type="file" name ="document">
+										</div><br>
+											<button type="submit" class="button button1" >Upload</button>
+									</form>
+							</div>
+						</div>
+					</section>
+
+					<section id="language" class="two">
+						<div class="container">
+
+							<header>
+                                <h4 class="heading main-header2">Uploaded Videos</h4>
+                            </header>
+                            
+							<div class="row">
+                                <div class="grid">
+                                    <div class="grid-sizer"></div>
+                                    <div class="container">
+                                    
+                                        
+									   {% for file in files %}
+									   		<font size=4 >{{ file.filepath}}</font><br>
+
+                                       {% endfor %} 
+
+                                    </div>
+                                </div>
+							</div>
+                            
+						</div>
+					</section>
+
+			</div>
+
+
+                
+					<!--section id="language" class="two">
+						<div class="container">
+
+                        	
+   						 	<center>
+
+   						 			<div class="center">	
+   						 			<form enctype="multipart/form-data" method="POST" action="/upload/">
+										{% csrf_token %}
+										{{ form.as_p }}
+										<div class="upload-btn-wrapper">
+  										<button class="btn">Choose Video</button>
+										<input type="file" name ="document">
+										</div><br>
+										<button type="submit" class="button button1" >Upload</button>
+									</form>
+									{% if url %}
+										<video width="1000" height="780" controls>
+  											<source src='{{url}}' type="video/mp4">
+  										</video>
+									{% endif %}	
+									</div>
+									
+								
+							</center>
+   						 		
+
+
+						</div>
+					</section-->
+
+			
+
+		<!-- Scripts -->
+		{% load staticfiles %}
+			<script src="{% static 'input/js/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'input/js/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'input/js/js/skel.min.js' %}"></script>
+			<script src="{% static 'input/js/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{% static 'input/js/js/main.js' %}"></script>
+            <script src="{% static 'input/js/js/masonry.pkgd.min.js' %}"></script>
+            <script>
+                $('.grid').masonry({
+                    // set itemSelector so .grid-sizer is not used in layout
+                    itemSelector: '.grid-item',
+                    // use element for option
+                    columnWidth: '.grid-sizer',
+                    percentPosition: true
+                })
+                
+            </script>
+
+	</body>
+
+</html>
