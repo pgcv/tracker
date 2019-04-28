@@ -156,7 +156,7 @@ input {
 					<section id="repo" class="one">
 						<div class="container">
                             <header>
-                                <h4 class="heading main-header1" style="position:relative;left: 44%;">Upload Video</h4>
+                                <h4 class="heading main-header1" style="position:relative;left: 42.5%;">Upload Video</h4>
                             </header>
                             
                             
@@ -178,21 +178,25 @@ input {
 						<div class="container">
 
 							<header>
-                                <h4 class="heading main-header2">Uploaded Videos</h4>
+                                <h4 class="heading main-header2" style="position:relative;left: 42%;">Uploaded Videos</h4>
                             </header>
                             
 							<div class="row">
-                                <div class="grid">
-                                    <div class="grid-sizer"></div>
+                                
                                     <div class="container">
                                     
                                         
 									   {% for file in files %}
-									   		<font size=4 >{{ file.filepath}}</font><br>
+									   		{% if file.processed == 0 %}
+									   			<video width="400" controls="controls" preload="metadata">
+  												<source src="{{file.filepath}}" type="video/mp4">
+												</video>
+											{% endif %}	
+									   		
 
                                        {% endfor %} 
-
-                                    </div>
+                                       
+                                   
                                 </div>
 							</div>
                             
