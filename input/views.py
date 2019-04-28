@@ -49,6 +49,8 @@ def signin(request):
         request.session['uname'] = username
         context['all_posts']=UserInfo.objects.all().filter(Q(email__icontains=username))
         user = authenticate(username=username, password=password)
+        context['files']=File.objects.all().filter(Q(name=username))
+
         if username:
         	if password:
         		match= UserInfo.objects.filter(Q(email__icontains=username)&Q(password__icontains=password ))
@@ -88,6 +90,8 @@ def signout(request):
 
 def upload(request):
     context={}
+    check={}
+    flag=0
     uploaded_file=request.FILES['document']
     fs=FileSystemStorage()
     name=fs.save(uploaded_file.name,uploaded_file)
@@ -95,22 +99,24 @@ def upload(request):
     filepath= fs.url(name)
     filename= request.session['uname']
     context['all_posts']=UserInfo.objects.all().filter(Q(email__icontains=filename))
+    check['test']=File.objects.all().filter(Q(name=filename))
+    for ch in check['test']:
+        cha=""
+        cha=str(ch).rsplit(' ')[1]
+        leng=len(cha)-4
+        cha=str(cha)
+        cha=cha[:leng]
+        filepa=str(filepath)
+        if str(cha) == filepa[:leng]:
+            flag=1
 
-    
     #return render(request,'input/results.html',context)
-    form= File(name=filename,filepath=filepath)
-    form.save()
+    form= File(name=filename,processed=0,filepath=filepath)
+    if(flag==0):
+        form.save()
 
     username=request.session['uname']    
-    if username:
-        match=File.objects.filter(Q(name=username))
-        if match:
-            context['files']=File.objects.all().filter(Q(name=username))
-
-
-       
-    
-      
+    context['files']=File.objects.all().filter(Q(name=username)) 
     return render(request, 'input/results.html', context)
 
 
