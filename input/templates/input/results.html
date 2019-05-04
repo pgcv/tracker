@@ -103,7 +103,7 @@ input {
 
 				<div class="top">
 
-					<!-- Logo -->
+					<!-- Profile -->
 						<div id="logo">
 							{% load staticfiles %}
 							{%  for post in all_posts %}
@@ -129,7 +129,7 @@ input {
 
 				<div class="bottom">
                     
-					<!-- Social Icons -->
+					<!-- Logout -->
 						<ul class="icons">
 							<li>
 								<a href="#" onClick="document.getElementById('logoutform').submit()">
@@ -149,14 +149,13 @@ input {
 			</div>
 
 		<!-- Main -->
-			<!-- Main -->
 			<div id="main">
                
                 
 					<section id="repo" class="one">
 						<div class="container">
                             <header>
-                                <h4 class="heading main-header1" style="position:relative;left: 42.5%;">Upload Video</h4>
+                                <h4 class="heading main-header1" style="position:relative;left: 44.5%;">Upload Video</h4>
                             </header>
                             
                             
@@ -178,7 +177,7 @@ input {
 						<div class="container">
 
 							<header>
-                                <h4 class="heading main-header2" style="position:relative;left: 42%;">Uploaded Videos</h4>
+                                <h4 class="heading main-header2" style="position:relative;left: 43%;">Uploaded Videos</h4>
                             </header>
                             
 							<div class="row">
@@ -188,7 +187,7 @@ input {
                                         
 									   {% for file in files %}
 									   		{% if file.processed == 0 %}
-									   			<video width="400" controls="controls" preload="metadata">
+									   			<video width="400" controls="controls" preload="metadata" style="position:relative;left: 5%;">
   												<source src="{{file.filepath}}" type="video/mp4">
 												</video>
 											{% endif %}	
