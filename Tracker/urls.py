@@ -8,7 +8,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('input/', include('input.urls')),
+    url('index/', input_views.index,name='index'),
     url('signup/', input_views.signup,name='signup'),
     url('signup_form_submission', input_views.signup_form_submission, name='signup_form_submission'),
     url('signin', input_views.signin, name='signin'),
