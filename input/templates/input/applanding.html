@@ -52,14 +52,42 @@
                             </div>
                             <!-- End Logo -->
                         </div>
-                        
+                        <div class="s-header__navbar-row-col">
+                            <!-- Trigger -->
+                            <a href="javascript:void(0);" class="s-header__trigger js__trigger">
+                                <span class="s-header__trigger-icon"></span>
+                                <svg x="0rem" y="0rem" width="3.125rem" height="3.125rem" viewbox="0 0 54 54">
+                                    <circle fill="transparent" stroke="#fff" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+                                </svg>
+                            </a>
+                            <!-- End Trigger -->
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- End Navbar -->
-       
-       
 
+       <!-- Overlay -->
+            <div class="s-header-bg-overlay js__bg-overlay">
+                <!-- Nav -->
+                <nav class="s-header__nav js__scrollbar">
+                    <div class="container-fluid">
+                        <!-- Menu List -->                                
+                        <ul class="list-unstyled s-header__nav-menu">
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_app_landing.html">Home</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="about.html">About</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="team.html">Team</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Contact</a></li>
+                            
+                        </ul>
+                        <!-- End Menu List -->
+                    </div>
+                </nav>
+                <!-- End Nav -->
+                
+                
+            </div>
+            <!-- End Overlay -->
         </header>
         <!--========== END HEADER ==========-->
 
@@ -118,7 +146,9 @@
                     <p class="g-font-size-18--sm">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
                 </div>
                 <div class="col-sm-1"></div>
-                
+                <div class="col-sm-5 g-hor-centered-row__col">
+                    <img class="img-responsive" src="{% static 'input/img/mockups/iphone-03.png' %}" alt="Mockup Image">
+                </div>
             </div>
             
         </div>
@@ -139,7 +169,81 @@
 
         
 
-        
+        <!-- Plan -->
+        <div class="g-bg-color--sky-light">
+            <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+                <div class="g-text-center--xs g-margin-b-80--xs">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Plan</p>
+                    <h2 class="g-font-size-32--xs g-font-size-36--md">Finding your Plan</h2>
+                </div>
+
+                <div class="row g-row-col--5">
+                    <!-- Plan -->
+                    <div class="col-md-4 g-margin-b-10--xs g-margin-b-0--lg">
+                        <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
+                                <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-archive"></i>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Individual</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Mobile-Optimized Website</li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Powerful Documentation</li>
+                                </ul>
+                                <div class="g-margin-b-40--xs">
+                                    <span class="s-plan-v1__price-mark">$</span>
+                                    <span class="s-plan-v1__price-tag">39</span>
+                                </div>
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+                    <!-- Plan -->
+                    <div class="col-md-4 g-margin-b-10--xs g-margin-b-0--lg">
+                        <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".2s">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
+                                <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-package"></i>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Team</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Mobile-Optimized Website</li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Powerful Documentation</li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Sell Unlimited Products</li>
+                                </ul>
+                                <div class="g-margin-b-40--xs">
+                                    <span class="s-plan-v1__price-mark">$</span>
+                                    <span class="s-plan-v1__price-tag">59</span>
+                                </div>
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+                    
+                    <!-- Plan -->
+                    <div class="col-md-4">
+                        <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".3s">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
+                                <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-gift"></i>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Enterprise</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Mobile-Optimized Website</li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Powerful Documentation</li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Sell Unlimited Products</li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> 24/7 Customer Support</li>
+                                </ul>
+                                <div class="g-margin-b-40--xs">
+                                    <span class="s-plan-v1__price-mark">$</span>
+                                    <span class="s-plan-v1__price-tag">79</span>
+                                </div>
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+                </div>
+            </div>
+        </div>
+        <!-- End Plan -->
 
         <!-- Contact -->
         <div class="s-promo-block-v7 g-bg-position--center g-bg-color--dark-light" style="background: url({% static 'input/img/1920x1080/05.jpg' %}) no-repeat;">
@@ -171,6 +275,37 @@
         </div>
         <!-- End Contact -->
         <!--========== END PAGE CONTENT ==========-->
+
+        <!--========== FOOTER ==========-->
+        <footer class="g-bg-color--dark">
+            <!-- Links -->
+            <div class="g-hor-divider__dashed--white-opacity-lightest">
+                <div class="container g-padding-y-80--xs">
+                    <div class="row">
+                        <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Home</a></li>
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">About</a></li>
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Contact</a></li>
+                            </ul>
+                        </div>
+                    
+                            </ul>
+                        </div>
+                        <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Privacy Policy</a></li>
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Terms &amp; Conditions</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 s-footer__logo g-padding-y-50--xs g-padding-y-0--md">
+                            <h3 class="g-font-size-18--xs g-color--white">Trackerman</h3>
+                            <p class="g-color--white-opacity">We are a creative studio focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and simplicity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Links -->
 
  
         </footer>

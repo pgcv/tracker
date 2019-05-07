@@ -11,8 +11,8 @@ from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, get_object_or_404, redirect
-
-
+from ssdtracker import Det
+import os
 
 @cache_control(no_cache=True, must_revalidate=True)
 
@@ -115,7 +115,11 @@ def upload(request):
     if(flag==0):
         form.save()
 
-    username=request.session['uname']    
+    username=request.session['uname']  
+    fileurl=filepath.rsplit('/')
+    filep=fileurl[1]+'/'+fileurl[2]
+    det = Det()
+    det.process_video(filep)  
     context['files']=File.objects.all().filter(Q(name=username)) 
     return render(request, 'input/results.html', context)
 
