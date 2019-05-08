@@ -93,6 +93,7 @@ input {
 	text-align:center;
 	cursor:pointer;
 }
+
 </style>
 
 	</head>
@@ -103,7 +104,7 @@ input {
 
 				<div class="top">
 
-					<!-- Profile -->
+					<!-- Logo -->
 						<div id="logo">
 							{% load staticfiles %}
 							{%  for post in all_posts %}
@@ -129,7 +130,7 @@ input {
 
 				<div class="bottom">
                     
-					<!-- Logout -->
+					<!-- Social Icons -->
 						<ul class="icons">
 							<li>
 								<a href="#" onClick="document.getElementById('logoutform').submit()">
@@ -149,13 +150,14 @@ input {
 			</div>
 
 		<!-- Main -->
+			<!-- Main -->
 			<div id="main">
                
                 
 					<section id="repo" class="one">
 						<div class="container">
                             <header>
-                                <h4 class="heading main-header1" style="position:relative;left: 44.5%;">Upload Video</h4>
+                                <h4 class="heading main-header1" style="position:relative;left: 42.5%;">Upload Video</h4>
                             </header>
                             
                             
@@ -177,18 +179,17 @@ input {
 						<div class="container">
 
 							<header>
-                                <h4 class="heading main-header2" style="position:relative;left: 43%;">Uploaded Videos</h4>
+                                <h4 class="heading main-header2" style="position:relative;left: 42%;">Uploaded Videos</h4>
                             </header>
                             
 							<div class="row">
                                 
                                     <div class="container">
-                                    
-                                        
-									   {% for file in files %}
-									   		{% if file.processed == 0 %}
-									   			<video width="400" controls="controls" preload="metadata" style="position:relative;left: 5%;">
-  												<source src="{{file.filepath}}" type="video/mp4">
+                        
+                                       {% for outfile in outfiles %}
+									   		{% if outfile.processed == 0 %}
+									   			<video width="400" controls="controls" preload="metadata">
+  												<source src="{{outfile.filepath}}" type="video/mp4">
 												</video>
 											{% endif %}	
 									   		
@@ -206,37 +207,7 @@ input {
 
 
                 
-					<!--section id="language" class="two">
-						<div class="container">
-
-                        	
-   						 	<center>
-
-   						 			<div class="center">	
-   						 			<form enctype="multipart/form-data" method="POST" action="/upload/">
-										{% csrf_token %}
-										{{ form.as_p }}
-										<div class="upload-btn-wrapper">
-  										<button class="btn">Choose Video</button>
-										<input type="file" name ="document">
-										</div><br>
-										<button type="submit" class="button button1" >Upload</button>
-									</form>
-									{% if url %}
-										<video width="1000" height="780" controls>
-  											<source src='{{url}}' type="video/mp4">
-  										</video>
-									{% endif %}	
-									</div>
-									
-								
-							</center>
-   						 		
-
-
-						</div>
-					</section-->
-
+					
 			
 
 		<!-- Scripts -->
