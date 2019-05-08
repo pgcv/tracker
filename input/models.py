@@ -22,4 +22,13 @@ class File(models.Model):
     def __str__(self):
         return self.name + ": " + str(self.filepath)
 
+class OutFile(models.Model):
+    name= models.CharField(max_length=500)
+    processed=models.IntegerField(default=0)
+    filepath= models.FileField(upload_to='outfiles/', null=True, verbose_name="")
+
+
+    def __str__(self):
+        return self.name + ": " + str(self.filepath)        
+
 
