@@ -77,8 +77,8 @@ class Det():
 		frame_count = int(cap.get(7))
 		print("Total time: ",time.strftime("%H:%M:%S", time.gmtime(frame_count/fps)))
 
-		if not os.path.exists('output'):
-			os.makedirs('output')
+		if not os.path.exists('media/outfiles'):
+			os.makedirs('media/outfiles')
 
 		#Resizing the video
 		h, w = int(cap.get(3)), int(cap.get(4))
@@ -87,7 +87,7 @@ class Det():
 		width = int(w * r)
 
 		#Writer to write the video
-		writer = cv2.VideoWriter('output/'+name+'.mp4', cv2.VideoWriter_fourcc(*"mp4v"), fps,(height, width))
+		writer = cv2.VideoWriter('media/outfiles/'+name+'.webm', cv2.VideoWriter_fourcc(*"vp80"), fps,(height, width))
 		i=1
 		start = time.time()
 		mot_tracker = Sort()
