@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import UserInfo,File
+from .models import UserInfo,File,OutFile
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 from django.contrib.auth import authenticate, login, logout
@@ -11,8 +11,8 @@ from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, get_object_or_404, redirect
-
-
+from ssdtracker import Det
+import os
 
 @cache_control(no_cache=True, must_revalidate=True)
 
@@ -49,8 +49,8 @@ def signin(request):
         request.session['uname'] = username
         context['all_posts']=UserInfo.objects.all().filter(Q(email__icontains=username))
         user = authenticate(username=username, password=password)
-        context['files']=File.objects.all().filter(Q(name=username))
-
+        
+        context['outfiles']=OutFile.objects.all().filter(Q(name=username))
         if username:
         	if password:
         		match= UserInfo.objects.filter(Q(email__icontains=username)&Q(password__icontains=password ))
@@ -92,9 +92,10 @@ def upload(request):
     context={}
     check={}
     flag=0
+    row_count=File.objects.all().filter(Q(name=request.session['uname'])).count()
     uploaded_file=request.FILES['document']
     fs=FileSystemStorage()
-    name=fs.save(uploaded_file.name,uploaded_file)
+    name=fs.save('video'+str(row_count+1)+'.mp4',uploaded_file)
     context['url']=fs.url(name)
     filepath= fs.url(name)
     filename= request.session['uname']
@@ -109,14 +110,24 @@ def upload(request):
         filepa=str(filepath)
         if str(cha) == filepa[:leng]:
             flag=1
+    fileurl=filepath.rsplit('/')
+    filep=fileurl[1]+'/'+fileurl[2]
 
     #return render(request,'input/results.html',context)
-    form= File(name=filename,processed=0,filepath=filepath)
+    form= File(name=filename,processed=0,filepath='/media/video'+str(row_count+1)+'.mp4')
     if(flag==0):
-        form.save()
-
-    username=request.session['uname']    
-    context['files']=File.objects.all().filter(Q(name=username)) 
+        form.save()    
+    username=request.session['uname']  
+    fileurl=filepath.rsplit('/')
+    filep=fileurl[1]+'/'+fileurl[2]
+    det = Det()
+    det.process_video(filep)  
+    #outfile=fileurl[2]
+    outform= OutFile(name=filename,processed=0,filepath='/media/outfiles/video'+str(row_count+1)+'.webm')
+    if(flag==0):
+        outform.save()
+    
+    context['outfiles']=OutFile.objects.all().filter(Q(name=username))
     return render(request, 'input/results.html', context)
 
 
